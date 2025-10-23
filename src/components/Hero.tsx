@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 
 
 const Hero: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,12 +32,6 @@ const Hero: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [mouseX, mouseY]);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center section-padding py-20 overflow-hidden">

@@ -9,7 +9,7 @@ import StickyButton from './components/StickyButton';
 import VideosSection from './components/VideosSection';
 import SponsorSection from './components/SponsorSection';
 import TopPromoBar from './components/TopPromoBar';
-import CongressLogo from './components/CongressLogo';
+// import CongressLogo from './components/CongressLogo';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
