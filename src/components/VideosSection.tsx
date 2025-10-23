@@ -31,6 +31,7 @@ interface VideoItem {
   focusPosition?: string; // posição para focar somente o rosto
   isWistiaVideo?: boolean; // indica se é um vídeo Wistia
   wistiaMediaId?: string; // ID do vídeo Wistia
+  backgroundSize?: string; // tamanho customizado do background
 }
 
 const videos: VideoItem[] = [
@@ -60,7 +61,8 @@ const videos: VideoItem[] = [
     artUrl: 'https://i.postimg.cc/8cqF9NJF/Whats-App-Image-2025-10-16-at-13-51-04.jpg',
     isWistiaVideo: true,
     wistiaMediaId: 'qrm0f7temq',
-    focusPosition: '50% 22%'
+    focusPosition: '50% 22%',
+    backgroundSize: 'auto 110%'
   }
 ];
 
@@ -179,7 +181,7 @@ const VideosSection: React.FC = () => {
                     className="absolute inset-0"
                     style={{
                       backgroundImage: item.artUrl ? `url(${item.artUrl})` : undefined,
-                      backgroundSize: 'cover',
+                      backgroundSize: item.backgroundSize || 'cover',
                       backgroundPosition: item.focusPosition || 'right center',
                       backgroundRepeat: 'no-repeat',
                       filter: 'brightness(0.85)'
@@ -287,6 +289,20 @@ const VideosSection: React.FC = () => {
             );
           })}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 flex justify-center"
+        >
+          <img
+             src="https://i.postimg.cc/gcS7vd5v/Whats-App-Image-2025-10-23-at-14-31-08.jpg"
+             alt="Palestrantes do ATUALIZAVET"
+             className="w-full max-w-3xl h-auto rounded-2xl shadow-2xl border border-white/10"
+             loading="lazy"
+           />
+        </motion.div>
       </div>
     </section>
   );
